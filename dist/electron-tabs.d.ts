@@ -77,6 +77,10 @@ export class Tab extends EventTarget {
     emit(type: string, ...args: any[]): void;
     on(type: string, fn: (...detail: any[]) => void): void;
     once(type: string, fn: (detail: string) => void): void;
+    createContextMenu(): HTMLElement;
+    showContextMenu(event: any): void;
+    createMenuItem(label: string, action: any): HTMLDivElement;
+    closeContextMenu(): void;
     initWebview(): void;
     setTitle(title: string): this;
     getTitle(): string;

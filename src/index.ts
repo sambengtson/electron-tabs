@@ -41,14 +41,15 @@ const CLASSNAMES = {
   TAB: "tab",
   BUTTONS: "buttons",
   VIEWS: "views",
-  VIEW: "view"
+  VIEW: "view",
+  CONTEXT: 'context'
 }
 
 function emit(emitter: TabGroup | Tab, type: string, args: any[]) {
   if (type === "ready") {
     emitter.isReady = true;
   }
-  emitter.dispatchEvent(new CustomEvent(type, { detail: args }));
+  emitter.dispatchEvent(new CustomEvent(type, {detail: args}));
 }
 
 function on(emitter: TabGroup | Tab, type: string, fn: (detail: string) => void, options?: { [key: string]: any }) {
@@ -76,7 +77,7 @@ class TabGroup extends HTMLElement {
     // Options
     this.options = {
       closeButtonText: this.getAttribute("close-button-text") || "&#215;",
-      defaultTab: { title: "New Tab", active: true },
+      defaultTab: {title: "New Tab", active: true},
       newTabButton: !!this.getAttribute("new-tab-button") === true || false,
       newTabButtonText: this.getAttribute("new-tab-button-text") || "&#65291;",
       sortable: !!this.getAttribute("sortable") === true || false,
@@ -104,7 +105,7 @@ class TabGroup extends HTMLElement {
   }
 
   once(type: string, fn: (detail: string) => void) {
-    return on(this, type, fn, { once: true });
+    return on(this, type, fn, {once: true});
   }
 
   connectedCallback() {
@@ -305,7 +306,7 @@ class Tab extends EventTarget {
     this.tabGroup = tabGroup;
     this.title = args.title;
     this.webviewAttributes = args.webviewAttributes || {};
-    this.webviewAttributes.src = args.src;
+    this.webviewAttributes.src = args.src || args.webviewAttributes.src;
 
     this.initTab();
     this.initWebview();
@@ -329,7 +330,7 @@ class Tab extends EventTarget {
   }
 
   once(type: string, fn: (detail: string) => void) {
-    return on(this, type, fn, { once: true });
+    return on(this, type, fn, {once: true});
   }
 
   private initTab() {
@@ -361,15 +362,18 @@ class Tab extends EventTarget {
 
   private initTabClickHandler() {
     // Mouse up
-    const tabClickHandler = function(e: KeyboardEvent) {
+    const tabClickHandler = function (e: KeyboardEvent) {
       if (this.isClosed) return;
       if (e.which === 2) {
         this.close();
       }
     };
     this.element.addEventListener("mouseup", tabClickHandler.bind(this), false);
+    this.element.addEventListener('contextmenu', (e) => {
+      this.showContextMenu(e);
+    });
     // Mouse down
-    const tabMouseDownHandler = function(e: KeyboardEvent) {
+    const tabMouseDownHandler = function (e: KeyboardEvent) {
       if (this.isClosed) return;
       if (e.which === 1) {
         if ((e.target as HTMLElement).matches("button")) return;
@@ -379,16 +383,94 @@ class Tab extends EventTarget {
     this.element.addEventListener("mousedown", tabMouseDownHandler.bind(this), false);
   }
 
+  createContextMenu() {
+    const contextMenu = document.getElementById('context-menu');
+    if (!contextMenu) {
+      const newContextMenu = document.createElement('div');
+      newContextMenu.id = 'context-menu';
+      newContextMenu.className = 'context-menu';
+      document.body.appendChild(newContextMenu);
+      return newContextMenu;
+    }
+    return contextMenu;
+  }
+
+  showContextMenu(event: any) {
+    const self = this;
+    // Prevent the default context menu from appearing
+    event.preventDefault();
+
+    // Get the context menu element
+    const contextMenu = this.createContextMenu();
+
+    // Clear any existing items in the context menu
+    contextMenu.innerHTML = '';
+
+    // Create and add context menu items
+    const menuItem1 = this.createMenuItem('Duplicate Tab', function () {
+      debugger;
+      const tab = self.tabGroup.getActiveTab();
+      // @ts-ignore
+      tab.active = 'true';
+      self.tabGroup.addTab(tab);
+    });
+
+    // Append menu items to the context menu
+    contextMenu.appendChild(menuItem1);
+
+    // Position the context menu based on the mouse click event
+    contextMenu.style.left = `${event.clientX}px`;
+    contextMenu.style.top = `40px`;
+    contextMenu.style.position = 'absolute';
+    // @ts-ignore
+    contextMenu.style['background-color'] = 'white';
+    contextMenu.style.border = '1px solid #ccc';
+    // @ts-ignore
+    contextMenu.style['box-shadow'] = '2px 2px 5px rgba(0, 0, 0, 0.2)';
+    contextMenu.style.padding = '20px';
+    // @ts-ignore
+    contextMenu.style['z-index'] = '1000';
+
+    // Display the context menu
+    contextMenu.style.display = 'block';
+
+    // Close the context menu when clicking outside of it
+    document.addEventListener('click', this.closeContextMenu);
+  }
+
+  createMenuItem(label: string, action: any) {
+    const self = this;
+    const menuItem = document.createElement('div');
+    menuItem.className = 'context-menu-item';
+    menuItem.textContent = label;
+    menuItem.style.cursor = 'pointer';
+    menuItem.style.padding = '6px';
+    menuItem.addEventListener('click', function () {
+      // Execute the action associated with the menu item
+      action();
+      // Close the context menu after the action is performed
+      self.closeContextMenu();
+    });
+    return menuItem;
+  }
+
+  closeContextMenu() {
+    const self = this;
+    const contextMenu = document.getElementById('context-menu');
+    contextMenu.style.display = 'none';
+    document.removeEventListener('click', self.closeContextMenu);
+  }
+
   initWebview() {
     const webview = this.webview = document.createElement("webview");
 
-    const tabWebviewDidFinishLoadHandler = function(e: Event) {
+    const tabWebviewDidFinishLoadHandler = function (e: Event) {
       this.emit("webview-ready", this);
     };
 
     this.webview.addEventListener("did-finish-load", tabWebviewDidFinishLoadHandler.bind(this), false);
 
-    const tabWebviewDomReadyHandler = function(e: Event) {
+    const tabWebviewDomReadyHandler = function (e: Event) {
       // Remove this once https://github.com/electron/electron/issues/14474 is fixed
       webview.blur();
       webview.focus();
@@ -564,4 +646,4 @@ class Tab extends EventTarget {
 
 customElements.define("tab-group", TabGroup);
 
-export type { TabGroup, Tab };
+export type {TabGroup, Tab};

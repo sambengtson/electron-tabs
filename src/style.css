@@ -206,3 +206,23 @@ webview.visible {
   position: relative;
   height: calc(100vh - 33px);
 }
+
+/* Style for the context menu and items */
+.context-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  z-index: 1000;
+}
+
+.context-menu-item {
+  cursor: pointer;
+  padding: 6px;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}

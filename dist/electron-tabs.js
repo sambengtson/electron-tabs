@@ -2499,7 +2499,7 @@ var $64afbd09cd65a300$export$2e2bcd8739ae039 = $64afbd09cd65a300$export$31b3ca70
 
 
 var $0648b347057451f2$exports = {};
-$0648b347057451f2$exports = ":host {\n  --tabgroup-background: #e7eaed;\n  --tab-font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n  --tab-font-size: 13px;\n  --tab-background: #e7eaed;\n  --tab-color: #696a6c;\n  --tab-border-color: #dadce0;\n  --tab-transition: background-color 200ms ease-out, color 200ms ease-out;\n  --tab-cursor: pointer;\n  --tab-active-color: currentcolor;\n  --tab-active-background: #fff;\n  --tag-hover-color: currentcolor;\n  --tag-hover-background: #f1f3f4;\n  --button-font-size: 15px;\n  --button-background: none;\n  --button-color: #696a6c;\n  --button-hover-background: #dadce0;\n  --button-hover-color: #383a3e;\n  --button-border-radius: 50%;\n  --button-cursor: pointer;\n  --badge-background: #383a3e;\n  --badge-color: #fff;\n  --close-button-visibility: visible;\n}\n\nwebview {\n  visibility: hidden;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n}\n\nwebview.visible {\n  visibility: visible;\n}\n\n.etabs {\n  font-family: var(--tab-font-family);\n  text-rendering: optimizelegibility;\n  font-feature-settings: \"liga\", \"clig\", \"kern\";\n}\n\n.nav {\n  background: var(--tabgroup-background);\n  box-shadow: inset 0 -1px var(--tab-border-color);\n  border-top: 1px solid var(--tab-border-color);\n  font-size: var(--tab-font-size);\n  width: 100%;\n  height: 32px;\n  cursor: default;\n  -webkit-user-select: none;\n  user-select: none;\n  display: none;\n}\n\n.nav.visible {\n  display: flex;\n}\n\n.tabs {\n  height: 100%;\n}\n\n.tab {\n  background: var(--tab-background);\n  box-shadow: inset 0 -1px var(--tab-border-color);\n  color: var(--tab-color);\n  cursor: var(--tab-cursor);\n  font-size: var(--tab-font-size);\n  transition: var(--tab-transition);\n  box-sizing: border-box;\n  height: 100%;\n  align-items: center;\n  padding: 5px 9px;\n  display: none;\n  position: relative;\n}\n\n.tab:first-child {\n  border-left: none;\n}\n\n.tab.visible {\n  display: inline-flex;\n}\n\n.tab.active {\n  color: var(--tab-active-color);\n  background: var(--tab-active-background);\n  border-left: 1px solid var(--tab-border-color);\n  border-right: 1px solid var(--tab-border-color);\n  box-shadow: none;\n  padding-left: 8px;\n  padding-right: 8px;\n}\n\n.tab.active:last-child {\n  border-right: none;\n}\n\n.tab.visible:not(.active) + .tab.visible:not(.active) {\n  border-left: 1px solid var(--tab-border-color);\n  padding-left: 8px;\n}\n\n.tab:not(.active):hover {\n  background: var(--tab-hover-background);\n  color: var(--tab-hover-color);\n}\n\n.tab-badge {\n  background: var(--badge-background);\n  color: var(--badge-color);\n  text-align: center;\n  border-radius: 5px;\n  margin-left: 5px;\n  padding: 1px 4px;\n  font-size: 8px;\n  font-weight: bold;\n  line-height: 1.2;\n}\n\n.tab-badge.hidden {\n  display: none;\n}\n\n.tab-icon {\n  height: 16px;\n  display: inline-block;\n}\n\n.tab-icon img {\n  max-width: 16px;\n  max-height: 16px;\n}\n\n.tab-title, .tab-close {\n  margin-left: 10px;\n  display: inline-block;\n}\n\n.tab-close button {\n  background: var(--button-background);\n  border-radius: var(--button-border-radius);\n  color: var(--button-color);\n  cursor: var(--button-cursor);\n  font-size: var(--button-font-size);\n  width: 20px;\n  height: 20px;\n  text-align: center;\n  visibility: var(--close-button-visibility);\n  border: none;\n  padding: 1px 0 0;\n  display: inline-block;\n}\n\n.tab.active .tab-close button {\n  visibility: visible;\n}\n\n.tab-close button:hover {\n  color: var(--button-hover-color);\n  background: var(--button-hover-background);\n}\n\n.buttons {\n  border-left: 1px solid var(--tab-border-color);\n  padding: 5px;\n  display: flex;\n}\n\n.buttons button {\n  color: var(--button-color);\n  background: var(--button-background);\n  border-radius: var(--button-border-radius);\n  cursor: var(--button-cursor);\n  font-size: var(--button-font-size);\n  width: 20px;\n  height: 20px;\n  text-align: center;\n  border: none;\n  margin: 0;\n  padding: 1px 0 0;\n  font-family: inherit;\n  line-height: 1;\n  display: block;\n}\n\n.buttons button:hover {\n  color: var(--button-hover-color);\n  background: var(--button-hover-background);\n}\n\n.views {\n  height: calc(100vh - 33px);\n  position: relative;\n}\n\n";
+$0648b347057451f2$exports = ":host {\n  --tabgroup-background: #e7eaed;\n  --tab-font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\n  --tab-font-size: 13px;\n  --tab-background: #e7eaed;\n  --tab-color: #696a6c;\n  --tab-border-color: #dadce0;\n  --tab-transition: background-color 200ms ease-out, color 200ms ease-out;\n  --tab-cursor: pointer;\n  --tab-active-color: currentcolor;\n  --tab-active-background: #fff;\n  --tag-hover-color: currentcolor;\n  --tag-hover-background: #f1f3f4;\n  --button-font-size: 15px;\n  --button-background: none;\n  --button-color: #696a6c;\n  --button-hover-background: #dadce0;\n  --button-hover-color: #383a3e;\n  --button-border-radius: 50%;\n  --button-cursor: pointer;\n  --badge-background: #383a3e;\n  --badge-color: #fff;\n  --close-button-visibility: visible;\n}\n\nwebview {\n  visibility: hidden;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n}\n\nwebview.visible {\n  visibility: visible;\n}\n\n.etabs {\n  font-family: var(--tab-font-family);\n  text-rendering: optimizelegibility;\n  font-feature-settings: \"liga\", \"clig\", \"kern\";\n}\n\n.nav {\n  background: var(--tabgroup-background);\n  box-shadow: inset 0 -1px var(--tab-border-color);\n  border-top: 1px solid var(--tab-border-color);\n  font-size: var(--tab-font-size);\n  width: 100%;\n  height: 32px;\n  cursor: default;\n  -webkit-user-select: none;\n  user-select: none;\n  display: none;\n}\n\n.nav.visible {\n  display: flex;\n}\n\n.tabs {\n  height: 100%;\n}\n\n.tab {\n  background: var(--tab-background);\n  box-shadow: inset 0 -1px var(--tab-border-color);\n  color: var(--tab-color);\n  cursor: var(--tab-cursor);\n  font-size: var(--tab-font-size);\n  transition: var(--tab-transition);\n  box-sizing: border-box;\n  height: 100%;\n  align-items: center;\n  padding: 5px 9px;\n  display: none;\n  position: relative;\n}\n\n.tab:first-child {\n  border-left: none;\n}\n\n.tab.visible {\n  display: inline-flex;\n}\n\n.tab.active {\n  color: var(--tab-active-color);\n  background: var(--tab-active-background);\n  border-left: 1px solid var(--tab-border-color);\n  border-right: 1px solid var(--tab-border-color);\n  box-shadow: none;\n  padding-left: 8px;\n  padding-right: 8px;\n}\n\n.tab.active:last-child {\n  border-right: none;\n}\n\n.tab.visible:not(.active) + .tab.visible:not(.active) {\n  border-left: 1px solid var(--tab-border-color);\n  padding-left: 8px;\n}\n\n.tab:not(.active):hover {\n  background: var(--tab-hover-background);\n  color: var(--tab-hover-color);\n}\n\n.tab-badge {\n  background: var(--badge-background);\n  color: var(--badge-color);\n  text-align: center;\n  border-radius: 5px;\n  margin-left: 5px;\n  padding: 1px 4px;\n  font-size: 8px;\n  font-weight: bold;\n  line-height: 1.2;\n}\n\n.tab-badge.hidden {\n  display: none;\n}\n\n.tab-icon {\n  height: 16px;\n  display: inline-block;\n}\n\n.tab-icon img {\n  max-width: 16px;\n  max-height: 16px;\n}\n\n.tab-title, .tab-close {\n  margin-left: 10px;\n  display: inline-block;\n}\n\n.tab-close button {\n  background: var(--button-background);\n  border-radius: var(--button-border-radius);\n  color: var(--button-color);\n  cursor: var(--button-cursor);\n  font-size: var(--button-font-size);\n  width: 20px;\n  height: 20px;\n  text-align: center;\n  visibility: var(--close-button-visibility);\n  border: none;\n  padding: 1px 0 0;\n  display: inline-block;\n}\n\n.tab.active .tab-close button {\n  visibility: visible;\n}\n\n.tab-close button:hover {\n  color: var(--button-hover-color);\n  background: var(--button-hover-background);\n}\n\n.buttons {\n  border-left: 1px solid var(--tab-border-color);\n  padding: 5px;\n  display: flex;\n}\n\n.buttons button {\n  color: var(--button-color);\n  background: var(--button-background);\n  border-radius: var(--button-border-radius);\n  cursor: var(--button-cursor);\n  font-size: var(--button-font-size);\n  width: 20px;\n  height: 20px;\n  text-align: center;\n  border: none;\n  margin: 0;\n  padding: 1px 0 0;\n  font-family: inherit;\n  line-height: 1;\n  display: block;\n}\n\n.buttons button:hover {\n  color: var(--button-hover-color);\n  background: var(--button-hover-background);\n}\n\n.views {\n  height: calc(100vh - 33px);\n  position: relative;\n}\n\n.context-menu {\n  z-index: 1000;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  padding: 8px;\n  display: none;\n  position: absolute;\n  box-shadow: 2px 2px 5px #0003;\n}\n\n.context-menu-item {\n  cursor: pointer;\n  padding: 6px;\n}\n\n.context-menu-item:hover {\n  background-color: #f0f0f0;\n}\n\n";
 
 
 if (!document) throw Error("electron-tabs module must be called in renderer process");
@@ -2510,7 +2510,8 @@ const $eda442ba39f881a8$var$CLASSNAMES = {
     TAB: "tab",
     BUTTONS: "buttons",
     VIEWS: "views",
-    VIEW: "view"
+    VIEW: "view",
+    CONTEXT: 'context'
 };
 function $eda442ba39f881a8$var$emit(emitter, type, args) {
     if (type === "ready") emitter.isReady = true;
@@ -2648,7 +2649,7 @@ class $eda442ba39f881a8$var$TabGroup extends HTMLElement {
     }
     getTabByRelPosition(position) {
         position = this.getActiveTab().getPosition() + position;
-        if (position <= 0) return null;
+        if (position < 0) return null;
         return this.getTabByPosition(position);
     }
     getNextTab() {
@@ -2697,7 +2698,7 @@ class $eda442ba39f881a8$var$Tab extends EventTarget {
         this.tabGroup = tabGroup;
         this.title = args.title;
         this.webviewAttributes = args.webviewAttributes || {};
-        this.webviewAttributes.src = args.src;
+        this.webviewAttributes.src = args.src || args.webviewAttributes.src;
         this.initTab();
         this.initWebview();
         if (args.visible !== false) this.show();
@@ -2750,6 +2751,9 @@ class $eda442ba39f881a8$var$Tab extends EventTarget {
             if (e.which === 2) this.close();
         };
         this.element.addEventListener("mouseup", tabClickHandler.bind(this), false);
+        this.element.addEventListener('contextmenu', (e)=>{
+            this.showContextMenu(e);
+        });
         // Mouse down
         const tabMouseDownHandler = function(e) {
             if (this.isClosed) return;
@@ -2759,6 +2763,73 @@ class $eda442ba39f881a8$var$Tab extends EventTarget {
             }
         };
         this.element.addEventListener("mousedown", tabMouseDownHandler.bind(this), false);
+    }
+    createContextMenu() {
+        const contextMenu = document.getElementById('context-menu');
+        if (!contextMenu) {
+            const newContextMenu = document.createElement('div');
+            newContextMenu.id = 'context-menu';
+            newContextMenu.className = 'context-menu';
+            document.body.appendChild(newContextMenu);
+            return newContextMenu;
+        }
+        return contextMenu;
+    }
+    showContextMenu(event) {
+        const self = this;
+        // Prevent the default context menu from appearing
+        event.preventDefault();
+        // Get the context menu element
+        const contextMenu = this.createContextMenu();
+        // Clear any existing items in the context menu
+        contextMenu.innerHTML = '';
+        // Create and add context menu items
+        const menuItem1 = this.createMenuItem('Duplicate Tab', function() {
+            debugger;
+            const tab = self.tabGroup.getActiveTab();
+            // @ts-ignore
+            tab.active = 'true';
+            self.tabGroup.addTab(tab);
+        });
+        // Append menu items to the context menu
+        contextMenu.appendChild(menuItem1);
+        // Position the context menu based on the mouse click event
+        contextMenu.style.left = `${event.clientX}px`;
+        contextMenu.style.top = `40px`;
+        contextMenu.style.position = 'absolute';
+        // @ts-ignore
+        contextMenu.style['background-color'] = 'white';
+        contextMenu.style.border = '1px solid #ccc';
+        // @ts-ignore
+        contextMenu.style['box-shadow'] = '2px 2px 5px rgba(0, 0, 0, 0.2)';
+        contextMenu.style.padding = '20px';
+        // @ts-ignore
+        contextMenu.style['z-index'] = '1000';
+        // Display the context menu
+        contextMenu.style.display = 'block';
+        // Close the context menu when clicking outside of it
+        document.addEventListener('click', this.closeContextMenu);
+    }
+    createMenuItem(label, action) {
+        const self = this;
+        const menuItem = document.createElement('div');
+        menuItem.className = 'context-menu-item';
+        menuItem.textContent = label;
+        menuItem.style.cursor = 'pointer';
+        menuItem.style.padding = '6px';
+        menuItem.addEventListener('click', function() {
+            // Execute the action associated with the menu item
+            action();
+            // Close the context menu after the action is performed
+            self.closeContextMenu();
+        });
+        return menuItem;
+    }
+    closeContextMenu() {
+        const self = this;
+        const contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'none';
+        document.removeEventListener('click', self.closeContextMenu);
     }
     initWebview() {
         const webview = this.webview = document.createElement("webview");
